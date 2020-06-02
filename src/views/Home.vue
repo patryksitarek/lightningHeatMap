@@ -42,12 +42,11 @@
             <p v-else class="setting-value">Value: {{ strikes }}</p>
           </div>
           <div class="input-group">
-            <p for="strikes-slider" class="settings-label">&nbsp;</p>
+            <label for="strikes-slider" class="settings-label">&nbsp;</label>
             <label v-if="isHeatmap" class="settings-label" for="select-all">
               <input v-model="loadAll" id="select-all" type="checkbox"> Show all
             </label>
-            <button v-on:click="reloadMap">Apply settings</button>
-            <p class="setting-value">&nbsp;</p>
+            <button v-on:click="reloadMap" style="margin: auto;">Apply settings</button>
           </div>
         </div>
       </div>
