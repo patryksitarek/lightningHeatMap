@@ -12,6 +12,7 @@ const AUTHORIZATION_KEY = 'YOUR_AUTHORIZATION_KEY_GOES_HERE'
 
 const app = express()
 app.use(serveStatic('./dist'))
+app.use(express.json())
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
