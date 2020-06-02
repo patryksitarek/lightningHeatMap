@@ -1,24 +1,31 @@
 # lightning-heatmap
 
 ## Project setup
+
+### Clone the repository
 ```
-npm install
+git clone https://github.com/patryksitarek/lightningHeatMap.git
+cd lightningHeatMap
 ```
 
-### Compiles and hot-reloads for development
+### Replace the placeholder files
+The following files are placeholders:
 ```
-npm run serve
+./src/secrets.js
+./lightningCoords.db
 ```
 
-### Compiles and minifies for production
+### Install dependencies
+```
+npm i
+```
+
+### Build the app
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Start the server
 ```
-npm run lint
+node server
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
