@@ -16,7 +16,6 @@
       </div>
       <router-link to="/" class="nav-item">Heatmap</router-link>
       <router-link to="/pins" class="nav-item">Pins</router-link>
-      <router-link to="/about" class="nav-item">About</router-link>
       <div class="nav-item" id="navbar-right">
       </div>
     </div>
