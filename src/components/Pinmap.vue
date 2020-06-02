@@ -1,6 +1,6 @@
 <template>
   <div
-    ref="heatmap"
+    ref="pinmap"
   />
 </template>
 
@@ -8,7 +8,7 @@
 // import axios from 'axios'
 
 export default {
-  name: 'c-heat-map',
+  name: 'c-pin-map',
   props: {
     lat: {
       type: Number,
@@ -38,18 +38,6 @@ export default {
       type: [String, Number],
       default: () => '100%',
     },
-    opacity: {
-      type: Number,
-      default: () => 1,
-    },
-    maxIntensity: {
-      type: Number,
-      default: () => 15,
-    },
-    radius: {
-      type: Number,
-      default: () => 9,
-    },
   },
   computed: {
     mapWidth() {
@@ -68,32 +56,36 @@ export default {
     },
     mapCenter() {
       // eslint-disable-next-line
-      return new google.maps.LatLng(this.lat, this.lng)
+        return new google.maps.LatLng(this.lat, this.lng)
     },
-    heatmapPoints() {
+    pinmapMarkers() {
       return this.points.map(
           // eslint-disable-next-line
-        point => new google.maps.LatLng(point.LATITUDE, point.LONGITUDE)
-      )
+          point => new google.maps.Marker({
+            // eslint-disable-next-line
+            position: new google.maps.LatLng(point.LATITUDE, point.LONGITUDE),
+            clickable: true,
+            cursor: 'pointer',
+            draggable: false,
+            title: point.DATE.substring(0, 19),
+            opacity: 0.85,
+          }))
     },
   },
   mounted() {
     return this.$gmapApiPromiseLazy().then(() => {
       // eslint-disable-next-line
-      this.$mapObject = new google.maps.Map(this.$refs.heatmap, {
+        this.$mapObject = new google.maps.Map(this.$refs.pinmap, {
         zoom: this.initialZoom,
         center: this.mapCenter,
         mapTypeId: this.mapType,
       })
-      // eslint-disable-next-line
-      this.$heatmap = new google.maps.visualization.HeatmapLayer({
-        data: this.heatmapPoints,
-        map: this.$mapObject,
-        opacity: this.opacity,
-        radius: this.radius,
-      })
 
-      this.$heatmap.setMap(this.$mapObject)
+      this.$pins = this.pinmapMarkers
+
+      this.$pins.forEach((pin) => {
+        pin.setMap(this.$mapObject)
+      })
     })
   },
 }

@@ -45,3 +45,21 @@ app.get('/api/latest/:amount', (req, res, next) => {
     }
   })
 })
+
+// count - number of records currently in db
+app.get('/api/count', (req, res, next) => {
+  console.log(`API REQUEST: ${req.hostname} ${req.method} ${req.originalUrl}`)
+
+  const query = 'select count(*) from lightnings;'
+  db.get(query, [], (err, row) => {
+    if (err) {
+      console.error(err)
+    } else {
+      console.log(`${req.hostname} successfully retrieved count`)
+      res.json({
+        'status': 'ok',
+        'data': row['count(*)'],
+      })
+    }
+  })
+})

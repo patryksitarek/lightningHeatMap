@@ -14,14 +14,10 @@
           </svg>
         </div>
       </div>
-      <div class="nav-item">Heatmap</div>
-      <div class="nav-item">Pins</div>
-      <div class="nav-item">About</div>
+      <router-link to="/" class="nav-item">Heatmap</router-link>
+      <router-link to="/pins" class="nav-item">Pins</router-link>
+      <router-link to="/about" class="nav-item">About</router-link>
       <div class="nav-item" id="navbar-right">
-        <label class="nav-switch">
-          <input type="checkbox" class="nav-switch-input">
-          <span class="nav-switch-slider round"></span>
-        </label>
       </div>
     </div>
     <router-view :key="$route.fullPath" />
@@ -76,6 +72,8 @@ html, body {
 }
 
 .nav-item {
+  color: var(--text-dark);
+  text-decoration: none;
   font-family: inherit;
   padding: 18px 16px;
   box-sizing: border-box;
@@ -94,59 +92,6 @@ html, body {
 
 .nav-item:last-child {
   margin-left: auto;
-}
-
-.nav-switch {
-  display: inline-flex;
-  width: 60px;
-  height: 100%;
-  background-color: white;
-}
-
-.nav-switch-input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.nav-switch-slider {
-  cursor: pointer;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.nav-switch-slider:before {
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-/* SWITCH */
-input:checked, .nav-switch-slider {
-  background-color: #2196F3;
-}
-
-input:focus + .nav-switch-slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  transform: translateX(26px);
-  -ms-transform: translateX(26px);
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }
 
 .navbar {
