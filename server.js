@@ -12,7 +12,6 @@ const AUTHORIZATION_KEY = 'YOUR_AUTHORIZATION_KEY_GOES_HERE'
 
 const app = express()
 app.use(serveStatic('./dist'))
-app.use(express.json())
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
@@ -29,10 +28,13 @@ app.get('/api/', (req, res, next) => {
 // latest - retrieve the latest x records
 app.get('/api/latest/:amount', (req, res, next) => {
   // console.log(`API REQUEST: ${req.hostname} ${req.method} ${req.originalUrl}`)
-
   const amount = req.params.amount
-  const query = 'SELECT * FROM lightnings ORDER BY date DESC LIMIT ?;'
-  db.all(query, [amount], (err, rows) => {
+  const all = (amount === 'all')
+
+  let query = 'SELECT * FROM lightnings ORDER BY date DESC'
+  if (all) query = `${query} LIMIT ?`
+
+  db.all(query + ';', (all) ? [] : [amount], (err, rows) => {
     if (err) {
       // console.error(err.message)
       res.json({ 'status': 'error', 'message': ERR_MESSAGE })

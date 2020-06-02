@@ -75,7 +75,7 @@ export default {
     }
   },
   methods: {
-    loadData(amount = '30000') {
+    loadData(amount = 'all') {
       const url = `/api/latest/${amount}`
       axios
           .get(url)
@@ -102,6 +102,7 @@ export default {
           })
     },
     reloadMap() {
+      if (this.isHeatmap && this.loadAll) this.strikes = this.dbCount
       if (this.retrieved !== this.strikes) {
         this.loaded = false
         this.loadData(this.strikes)
