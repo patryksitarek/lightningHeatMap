@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import * as VueGoogleMaps from 'vue2-google-maps'
 // import * as VueGoogleHeatmap from 'vue-google-heatmap'
-import { GOOGLE_MAPS_API_KEY } from '../secrets.js'
+import { GOOGLE_MAPS_API_KEY } from './secrets.js'
 
 Vue.use(VueGoogleMaps, {
   load: {

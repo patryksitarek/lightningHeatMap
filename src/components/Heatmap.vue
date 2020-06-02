@@ -5,6 +5,8 @@
 </template>
 
 <script>
+// import axios from 'axios'
+
 export default {
   name: 'c-heat-map',
   props: {
@@ -42,7 +44,11 @@ export default {
     },
     maxIntensity: {
       type: Number,
-      default: () => 5,
+      default: () => 15,
+    },
+    radius: {
+      type: Number,
+      default: () => 9,
     },
   },
   computed: {
@@ -67,11 +73,22 @@ export default {
     heatmapPoints() {
       return this.points.map(
           // eslint-disable-next-line
-        point => new google.maps.LatLng(point.lat, point.lng)
+        point => new google.maps.LatLng(point.LATITUDE, point.LONGITUDE)
       )
     },
   },
   mounted() {
+    // const url = `/api/latest/10000`
+    // axios
+    //     .get(url)
+    //     .then((response) => {
+    //       // console.log(response)
+    //       const data = response.data.data
+    //       if (data) {
+    //         this.points = data
+    //       }
+    //     })
+    //     .then(() => {
     return this.$gmapApiPromiseLazy().then(() => {
       // eslint-disable-next-line
       this.$mapObject = new google.maps.Map(this.$refs.heatmap, {
@@ -84,11 +101,13 @@ export default {
         data: this.heatmapPoints,
         map: this.$mapObject,
         opacity: this.opacity,
-        maxIntensity: this.maxIntensity,
+        // maxIntensity: this.maxIntensity,
+        radius: this.radius,
       })
 
       this.$heatmap.setMap(this.$mapObject)
     })
+    // })
   },
 }
 </script>

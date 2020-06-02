@@ -22,4 +22,5 @@ pnpm-debug.log*
 *.sw?
 
 # Secrets
-/secrets.js
+/src/secrets.js
+/lightningCoords.db
