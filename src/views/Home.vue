@@ -35,17 +35,21 @@
           <div class="input-group">
             <label for="strikes-slider" class="settings-label">Strikes to load</label>
             <input id="strikes-slider" class="setting-slider"
-                   type="range" :step="Math.floor(maxStrikes / 1000)" min="100" :max="maxStrikes"
-                   v-model="strikes"
-            />
-            <label v-if="isHeatmap" class="settings-label" for="select-all">
-              Show all <input v-model="loadAll" id="select-all" type="checkbox">
-            </label>
+                  type="range" :step="Math.floor(maxStrikes / 1000)" min="100" :max="maxStrikes"
+                  v-model="strikes"
+           />
             <p v-if="isHeatmap && loadAll" class="setting-value">Showing all strikes</p>
             <p v-else class="setting-value">Value: {{ strikes }}</p>
           </div>
+          <div class="input-group">
+            <p for="strikes-slider" class="settings-label">&nbsp;</p>
+            <label v-if="isHeatmap" class="settings-label" for="select-all">
+              <input v-model="loadAll" id="select-all" type="checkbox"> Show all
+            </label>
+            <button v-on:click="reloadMap">Apply settings</button>
+            <p class="setting-value">&nbsp;</p>
+          </div>
         </div>
-        <button v-on:click="reloadMap">Apply settings</button>
       </div>
     </div>
   </div>
