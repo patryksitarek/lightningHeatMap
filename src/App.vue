@@ -29,6 +29,7 @@
   --foreground-dark: #213146;
   --text-dark: #a0b1c5;
   --text-secondary-dark: #d3d5f3;
+  background-color: var(--background-dark);
 }
 
 #app {
@@ -36,6 +37,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: var(--background-dark);
 }
 
 html, body {

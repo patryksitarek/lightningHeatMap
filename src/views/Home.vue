@@ -134,7 +134,7 @@ export default {
   position: relative;
   width: 75%;
   height: 1300px;
-  margin: 50px auto 200px;
+  margin: 50px auto 50px;
   background-color: var(--foreground-dark);
   border-radius: 5px;
   color: var(--text-dark);
