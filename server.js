@@ -32,7 +32,7 @@ app.get('/api/latest/:amount', (req, res, next) => {
   const all = (amount === 'all')
 
   let query = 'SELECT * FROM lightnings ORDER BY date DESC'
-  if (all) query = `${query} LIMIT ?`
+  if (!all) query = `${query} LIMIT ?`
 
   db.all(query + ';', (all) ? [] : [amount], (err, rows) => {
     if (err) {
