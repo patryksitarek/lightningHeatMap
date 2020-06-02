@@ -27,5 +27,5 @@ npm run build
 
 ### Start the server
 ```
-node server
+node server.js
 ```
