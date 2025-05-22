@@ -1,8 +1,5 @@
 # lightning-heatmap
 
-Temporarily, the application is available publicly (estimated shutdown date is 2020-06-06):
-http://35.234.105.90/#/
-
 ## Project setup
 
 ### Clone the repository
